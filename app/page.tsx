@@ -888,7 +888,7 @@ export default function Page() {
               <div className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">Заявка</div>
               <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">Получите консультацию по задаче ВЭД</h2>
               <p className="mt-4 text-base leading-7 text-slate-200">
-                Форма отправляет обращение напрямую на info@senatian.ru через Formspree, без открытия почтового клиента.
+                Форма отправляет обращение на info@senatian.ru через почтовый клиент пользователя.
               </p>
             </div>
 
