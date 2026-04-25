@@ -15,17 +15,19 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL("https://senatian.ru"),
   alternates: {
-  canonical: "/",
-},
-  
- verification: {
-  google: "sZdsYKlIYbd48UEXtFoo7kvNsNqBRgn5MEzEC24z52c",
-},  
+    canonical: "/",
+  },
+  verification: {
+    google: "sZdsYKlIYbd48UEXtFoo7kvNsNqBRgn5MEzEC24z52c",
+  },
   openGraph: {
     title: "СЕНАТИАН — ВЭД, таможня и международная логистика",
     description:
       "Комплексное сопровождение ВЭД для бизнеса: таможня, логистика, документы и поставки из Китая.",
     type: "website",
+    url: "https://senatian.ru/",
+    siteName: "СЕНАТИАН",
+    locale: "ru_RU",
   },
 };
 
