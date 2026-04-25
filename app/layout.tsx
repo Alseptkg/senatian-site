@@ -13,7 +13,10 @@ export const metadata: Metadata = {
     "финансовое сопровождение ВЭД",
     "СЕНАТИАН",
   ],
-  metadataBase: new URL("https://example.vercel.app"),
+  metadataBase: new URL("https://senatian.ru"),
+  alternates: {
+  canonical: "/",
+},
   openGraph: {
     title: "СЕНАТИАН — ВЭД, таможня и международная логистика",
     description:
