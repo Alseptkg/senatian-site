@@ -518,7 +518,30 @@ export default function Page() {
 
     const subject = encodeURIComponent("Заявка с сайта SENATIAN");
     const body = encodeURIComponent(`Имя: ${name}\nТелефон: ${phone}\nEmail: ${email}\nКомментарий: ${comment}`);
-    window.location.href = `mailto:info@senatian.ru?subject=${subject}&body=${body}`;
+    if (!name || !email || !comment) {
+  alert("Заполните имя, e-mail и комментарий");
+  return;
+}
+
+const response = await fetch("https://formspree.io/f/xojyrbzy", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  body: JSON.stringify({
+    name,
+    phone,
+    email,
+    comment
+  })
+});
+
+if (response.ok) {
+  alert("Заявка отправлена");
+} else {
+  alert("Ошибка отправки");
+};
   };
 
   if (page === "service" && selectedService) {
