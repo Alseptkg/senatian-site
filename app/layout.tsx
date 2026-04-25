@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   alternates: {
   canonical: "/",
 },
+  
+ verification: {
+  google: "sZdsYKlIYbd48UEXtFoo7kvNsNqBRgn5MEzEC24z52c",
+},  
   openGraph: {
     title: "СЕНАТИАН — ВЭД, таможня и международная логистика",
     description:
