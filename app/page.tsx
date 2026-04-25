@@ -510,38 +510,41 @@ export default function Page() {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   };
 
-  const submitLead = () => {
+  const submitLead = async () => {
     const name = (document.querySelector('input[placeholder="Ваше имя"]') as HTMLInputElement)?.value || "";
     const phone = (document.querySelector('input[placeholder="+7 (___) ___-__-__"]') as HTMLInputElement)?.value || "";
     const email = (document.querySelector('input[placeholder="name@company.ru"]') as HTMLInputElement)?.value || "";
     const comment = (document.querySelector("textarea") as HTMLTextAreaElement)?.value || "";
 
-    const subject = encodeURIComponent("Заявка с сайта SENATIAN");
-    const body = encodeURIComponent(`Имя: ${name}\nТелефон: ${phone}\nEmail: ${email}\nКомментарий: ${comment}`);
     if (!name || !email || !comment) {
-  alert("Заполните имя, e-mail и комментарий");
-  return;
-}
+      alert("Заполните имя, e-mail и комментарий");
+      return;
+    }
 
-const response = await fetch("https://formspree.io/f/xojyrbzy", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  },
-  body: JSON.stringify({
-    name,
-    phone,
-    email,
-    comment
-  })
-});
+    try {
+      const response = await fetch("https://formspree.io/f/xojyrbzy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          comment,
+          source: "Сайт SENATIAN",
+        }),
+      });
 
-if (response.ok) {
-  alert("Заявка отправлена");
-} else {
-  alert("Ошибка отправки");
-};
+      if (response.ok) {
+        alert("Заявка отправлена. Мы свяжемся с вами после обработки обращения.");
+      } else {
+        alert("Не удалось отправить заявку. Напишите нам на info@senatian.ru");
+      }
+    } catch (error) {
+      alert("Ошибка соединения. Напишите нам на info@senatian.ru");
+    }
   };
 
   if (page === "service" && selectedService) {
@@ -885,7 +888,7 @@ if (response.ok) {
               <div className="text-sm font-semibold uppercase tracking-[0.22em] text-cyan-200">Заявка</div>
               <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">Получите консультацию по задаче ВЭД</h2>
               <p className="mt-4 text-base leading-7 text-slate-200">
-                Форма отправляет обращение на info@senatian.ru через почтовый клиент пользователя.
+                Форма отправляет обращение напрямую на info@senatian.ru через Formspree, без открытия почтового клиента.
               </p>
             </div>
 
